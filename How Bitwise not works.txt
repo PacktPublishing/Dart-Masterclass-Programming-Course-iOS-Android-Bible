@@ -1,0 +1,15 @@
+How Bitwise Not works
+On a cell-by-cell basis, the bitwise operator evaluates the binary representation of the value of a single input. For each bit in the binary representation, the bitwise complement of the binary representation is determined. If the bit contains a one, the output will be a zero for that bit location; if the bit contains a zero, the output will be a one (the complement of the binary representation). When the input value is NoData, the bitwise expression outputs NoData.
+For example, the input value for a particular cell location on a raster is 5. The bitwise complement is performed, producing a new binary value. When the value of this number is printed as a decimal integer, its base10 value is assigned to the output. The example below is of an 8-bit integer.
+
+Value	Binary representation
+Input	5	00000101
+(Bitwise Not)	
+Output	-6	11111010
+The output value is -6 from the bitwise pattern above because negative numbers are stored as two's complement. That is, the above bit pattern, when converting to base10 for storage in two's complement, requires that the complement of the bit pattern be taken, except the first bit remains 1:
+10000101
+
+Then 1 is added to the bit pattern:
+10000110
+
+This pattern, when converted to base10, is -6. The decimal representation of the output value is not what you should be concerned with when using bitwise operators; it is only the bit pattern of the bitwise complement that is of interest (the first bitwise complement binary pattern listed above). The only time it's necessary to understand the two's complement storage for a base10 value is when you need to represent a bit pattern for a model that requires the first bit to be turned on (resulting in a negative number).
